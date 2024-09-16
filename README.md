@@ -8,7 +8,7 @@ This solution is designed to be modular, extendable, and fault-tolerant, ensurin
 
 ## Demo
 
-Have a look at this [link to see the demo in action.](https://starlit-dango-097120.netlify.app/)
+Have a look at this [link to see the demo in action.](https://verdant-twilight-a26876.netlify.app/)
 
 ## Tech Stack
 

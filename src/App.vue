@@ -2,7 +2,7 @@
 import { Package2, Search } from 'lucide-vue-next'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import LoaderCompoent from './components/LoaderCompoent.vue'
+import LoaderCompoent from './components/LoaderComponent.vue'
 import MetricCardComponent from './components/MetricComponent.vue'
 import OverviewComponent from './components/OverviewComponent.vue'
 import SalesComponent from './components/SalesComponent.vue'

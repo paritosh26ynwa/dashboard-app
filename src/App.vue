@@ -148,6 +148,11 @@ const getComponent = (type) => {
           <h2 class="text-3xl font-bold tracking-tight">
             {{ metadata.heading }}
           </h2>
+          <div class="flex items-center space-x-2">
+            <Button>
+              Download
+            </Button>
+          </div>
         </div>
         <div class="grid gap-4 grid-cols-12">
           <component v-for="(block, index) in metadata.components" :key="index" :is="getComponent(block.type)"

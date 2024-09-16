@@ -1,10 +1,14 @@
-# Metadata Driven Dashboard UI
+# Metadata Driven Dashboard UI - Documentation
 
-This is a demo app that displays UI based on the data provided by an external source.
+## Project Overview
+
+This project demonstrates a metadata-driven UI using Vue.js, where the UI components are dynamically generated based on metadata provided by an external source. The app showcases various components like metric cards, charts, and data tables, with fallbacks implemented to handle unsupported component types and missing data.
+
+This solution is designed to be modular, extendable, and fault-tolerant, ensuring that the app gracefully handles incomplete or erroneous metadata.
+
 ## Demo
 
-Have a look at this [link to see the demo in action.](https://verdant-twilight-a26876.netlify.app/)
-
+Have a look at this [link to see the demo in action.](https://starlit-dango-097120.netlify.app/)
 
 ## Tech Stack
 
@@ -12,7 +16,17 @@ Have a look at this [link to see the demo in action.](https://verdant-twilight-a
 - [TailwindCSS](https://tailwindcss.com/)
 - [Shadcn UI](https://ui.shadcn.com/)
 
-## Metadata
+## Solution Overview
+
+The core idea behind the solution is to:
+- Input Data Structure: Define a JSON structure that external sources can follow to render the UI.
+- Dummy Components: Create reusable components that are rendered dynamically based on the metadata.
+- Metadata Processor: Design a central function/component to process metadata and dynamically build the view.
+- Data Flow Support: Ensure data can be passed between components (e.g., through event emissions or props).
+
+## 1. Input Structure
+
+The app is driven by an external JSON that contains the layout and data for each component. Here's an example of how the input JSON is structured:
 
 ```
 {
@@ -98,3 +112,27 @@ Have a look at this [link to see the demo in action.](https://verdant-twilight-a
     ],
 }
 ```
+
+## 2. Dummy Components
+
+We have defined the following components for this demo:
+- LoaderCompoent: Displays a loader skeleton to mock an API call
+- MetricComponent: Displays metric details such as revenue count, active user count etc.
+- OverviewComponent: Displays a bar chart
+- SalesComponent: Displays a data table
+
+Each component defines props and fallback values to ensure the component renders correctly even if the external data is missing some fields.
+
+## 3. Metadata Processor
+
+The App.vue component is responsible for fetching the metadata and rendering the appropriate component based on the type defined in the metadata. It dynamically selects the correct component or a fallback if the type is unsupported.
+
+## 4. Data Flow Support
+
+Data can be passed between components through props
+
+## What Could Go Wrong (WCGW) Scenarios
+- Incorrect Metadata: If the external source provides incorrect metadata (e.g., a missing or unknown component type), it could break the UI. A good fallback would be to show a default component or error message when an unsupported type is encountered.
+- Data Mismatch: If the data structure expected by a component differs from what is provided (e.g., a missing type), it could result in broken functionality. Ensure that the data structure is validated before rendering the component.
+- Performance Issues: With a large amount of metadata or components, rendering could become slow. Consider optimizations such as lazy loading components.
+- State Management: Handling shared data between dynamically created components could be tricky, especially as the app scales. Vue’s event system or Vuex can help manage shared states effectively.
